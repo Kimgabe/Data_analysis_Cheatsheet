@@ -91,6 +91,8 @@
         
         [일정한 패턴이 없거나, 포맷이 다른 데이터 병합은 참고자료를 쓴다.](https://github.com/gabesoon/Python/blob/main/6.%20Preprocessing/04.%20%5B%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%8C%8C%ED%8E%B8%ED%99%94%20%EB%AC%B8%EC%A0%9C%5D%20%20%ED%8F%AC%EB%A7%B7%EC%9D%B4%20%EB%8B%A4%EB%A5%B8%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B3%91%ED%95%A9(merge)_(2)%20%EC%B0%B8%EC%A1%B0%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%80%20%ED%95%84%EC%9A%94%ED%95%9C%20%EA%B2%BD%EC%9A%B0.ipynb)
         
+        [폴더내의 동일한 from의 여러파일을 하나의 DataFrame으로 만들기](https://github.com/gabesoon/Python/blob/main/6.%20Preprocessing/01.%20%5B%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%8C%8C%ED%8E%B8%ED%99%94%20%EB%AC%B8%EC%A0%9C%5D%20concat%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B3%91%ED%95%A9%20(with%20for%20loop%20clause).ipynb)
+        
 4. DataFrame 관련
     - 컬럼 전처리 관련
         
@@ -106,7 +108,7 @@
         df.add_sufix("_접미사")
         ```
         
-    - DataFrame, 5개의 확장자로 저장하기
+    - DataFrame 저장하는 방법 5가지
         
         csv파일 저장
         
@@ -175,13 +177,10 @@
         ```
         
     
-    [폴더내의 동일한 from의 여러파일을 하나의 DataFrame으로 만들기](https://github.com/gabesoon/Python/blob/main/6.%20Preprocessing/01.%20%5B%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%8C%8C%ED%8E%B8%ED%99%94%20%EB%AC%B8%EC%A0%9C%5D%20concat%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B3%91%ED%95%A9%20(with%20for%20loop%20clause).ipynb)
-    
 5. 결측치 채우기
-    - 상세내용
-        
-        [시계열 데이터의 결측치는 근처값을 채우는게 일반적이다.](https://github.com/gabesoon/Python/blob/main/6.%20Preprocessing/09.%20%5B%EA%B2%B0%EC%B8%A1%EC%B9%98%20%EB%AC%B8%EC%A0%9C%5D%20%EC%8B%9C%EA%B3%84%EC%97%B4%20%EA%B2%B0%EC%B8%A1%EC%B9%98%20%EB%8C%80%EC%B2%B4.ipynb)
-        
+    
+    [시계열 데이터의 결측치는 근처값을 채우는게 일반적이다.](https://github.com/gabesoon/Python/blob/main/6.%20Preprocessing/09.%20%5B%EA%B2%B0%EC%B8%A1%EC%B9%98%20%EB%AC%B8%EC%A0%9C%5D%20%EC%8B%9C%EA%B3%84%EC%97%B4%20%EA%B2%B0%EC%B8%A1%EC%B9%98%20%EB%8C%80%EC%B2%B4.ipynb)
+    
 
 ---
 
@@ -194,22 +193,21 @@
 
 </aside>
 
-- 펼치기
-    
-    1. 저장할때부터 Unnamed:0 이 생성되지 않도록 하기
-    
-    ```python
-    df.to_csv("파일명", index=False) 
-    ```
-    
-    2. data를 불러올때 Unnamed:0 을 제외하기
-    
-    ```python
-    df = pd.read_csv("파일명", index_col = 0 )
-    ```
-    
-    출처 :  [좋은코딩](https://good-coding.tistory.com/39)
-    
+1. 저장할때부터 Unnamed:0 이 생성되지 않도록 하기
+
+```python
+df.to_csv("파일명", index=False) 
+```
+
+2. data를 불러올때 Unnamed:0 을 제외하기
+
+```python
+df = pd.read_csv("파일명", index_col = 0 )
+```
+
+Resource :  [좋은코딩](https://good-coding.tistory.com/39)
+
+---
 
 <aside>
 💡 df중 특정 컬럼 제외하고, 여러개의 컬럼명 동시에 변경하기
@@ -238,3 +236,5 @@ df.rename(columns = dict(new_names), inplace=True)
 ```
 
 Resource : [Stackoverflow](https://stackoverflow.com/questions/39772896/add-prefix-to-specific-columns-of-dataframe)
+
+---
