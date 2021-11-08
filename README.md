@@ -184,6 +184,14 @@
 
 ---
 
+## Modeling
+
+---
+
+1. [코드 2줄로 30초만에 수십개의 모델 성능 테스트가 가능하다?!]()
+
+---
+
 ## Etc
 
 ---
@@ -263,8 +271,6 @@ Resource : [Stackoverflow](https://stackoverflow.com/questions/39772896/add-pref
 
 </aside>
 
-[Faker official Document](https://faker.readthedocs.io/en/master/)
-
 ```python
 # faker 설치
 !pip install faker
@@ -294,5 +300,7 @@ World focus long and knowledge.
 
 {'job': 'Clothing/textile technologist', 'company': 'Pham LLC', 'ssn': '726-76-1858', 'residence': '225 Penny Ports Suite 467\nPort Sarah, AZ 26632', 'current_location': (Decimal('0.4203825'), Decimal('87.997714')), 'blood_group': 'A-', 'website': ['https://thomas-macias.com/', 'https://www.parrish-lee.biz/', 'http://www.graham-leonard.org/'], 'username': 'davidmiller', 'name': 'Debbie Wright', 'sex': 'F', 'address': '8629 Robert Brooks\nRossville, MN 77897', 'mail': 'tuckerrobyn@yahoo.com', 'birthdate': datetime.date(1906, 3, 15)}
 ```
+
+Resource : [Faker Official Document](https://faker.readthedocs.io/en/master/)
 
 ---
