@@ -189,7 +189,25 @@
 ---
 
 <aside>
-💡 1. csv 파일을 불러올때 "Unnamed:0" 컬럼을 제외하는 법<br><br>
+💡 Jupyter 에서 long-running cell이 완료되었을때 알림 받기
+→ 작업이 완료될 경우 브라우져의 pop up 알림이 뜬다.
+
+</aside>
+
+```python
+#!pip install jupyternotify
+
+%%notify
+import time
+for seconds in range(1,5):
+		print("Working on {} seconds...".format(seconds))
+		time.sleep(seconds)
+```
+
+---
+
+<aside>
+💡 1. csv 파일을 불러올때 "Unnamed:0" 컬럼을 제외하는 법
 
 </aside>
 
@@ -210,7 +228,7 @@ Resource :  [좋은코딩](https://good-coding.tistory.com/39)
 ---
 
 <aside>
-💡 df중 특정 컬럼 제외하고, 여러개의 컬럼명 동시에 (같은 형태로)변경하기
+💡 df중 특정 컬럼 제외하고, 여러개의 컬럼명 동시에 변경하기
 
 </aside>
 
@@ -236,5 +254,45 @@ df.rename(columns = dict(new_names), inplace=True)
 ```
 
 Resource : [Stackoverflow](https://stackoverflow.com/questions/39772896/add-prefix-to-specific-columns-of-dataframe)
+
+---
+
+<aside>
+💡 학습용 Fake 데이터를 만들기
+- fake text, fake credit card number 등을 생성할 수 있다.
+
+</aside>
+
+[Faker official Document](https://faker.readthedocs.io/en/master/)
+
+```python
+# faker 설치
+!pip install faker
+```
+
+```python
+from faker import Faker
+fake = Faker()
+
+print(fake.name(),'\n')
+print(fake.address(),'\n')
+print(fake.text(),'\n')
+print(fake.credit_card_number(),'\n')
+print(fake.profile())
+```
+
+```python
+Deanna Davidson 
+
+73742 Mason Views Apt. 888
+Port Jennifer, VA 06823 
+
+Task campaign article special then modern senior. Dinner table during both moment me. Cold establish behavior war power along general.
+World focus long and knowledge. 
+
+6517880058325992 
+
+{'job': 'Clothing/textile technologist', 'company': 'Pham LLC', 'ssn': '726-76-1858', 'residence': '225 Penny Ports Suite 467\nPort Sarah, AZ 26632', 'current_location': (Decimal('0.4203825'), Decimal('87.997714')), 'blood_group': 'A-', 'website': ['https://thomas-macias.com/', 'https://www.parrish-lee.biz/', 'http://www.graham-leonard.org/'], 'username': 'davidmiller', 'name': 'Debbie Wright', 'sex': 'F', 'address': '8629 Robert Brooks\nRossville, MN 77897', 'mail': 'tuckerrobyn@yahoo.com', 'birthdate': datetime.date(1906, 3, 15)}
+```
 
 ---
