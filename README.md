@@ -182,13 +182,37 @@
     [시계열 데이터의 결측치는 근처값을 채우는게 일반적이다.](https://github.com/gabesoon/Python/blob/main/6.%20Preprocessing/09.%20%5B%EA%B2%B0%EC%B8%A1%EC%B9%98%20%EB%AC%B8%EC%A0%9C%5D%20%EC%8B%9C%EA%B3%84%EC%97%B4%20%EA%B2%B0%EC%B8%A1%EC%B9%98%20%EB%8C%80%EC%B2%B4.ipynb)
     
 
+1. Encoding
+    
+    <aside>
+    💡 Categorical 데이터를 숫자형 데이터로 바꾸는 대표적 방법 : mean_eocoding
+    
+    - feature가 이미 너무 많을때 사용하면 좋다. (one_hot encoding만이 능사는 아니다.)
+    - 데이터의 차원수를 늘리지 않으면서 의미는 도출하고 싶을때!
+    - mean_encoding의 근간이 되는 feature들은 추후 의미를 역 유추할때 필요하기 때문에 keep 해주는 것이 좋다.
+    
+    </aside>
+    
+    ```python
+    df = copy.deepcopy(raw_data)
+    
+    for i in obj_features:
+        dynamic_variable = str(i) + '_encode' # 여러개의 feature 동시에 encoding
+        globals()[dynamic_variable] = df.groupby(i)['y값'].mean() # 문자열 컬럼의 mean값 추출
+    
+        new_col = str(i) + '_mean_enc' # 접미사 붙여서 새로운 컬럼 생성
+        df.loc[:, new_col] = df[i].map(globals()[dynamic_variable]) # mean값을 mapping
+    ```
+    
+    - df.groupby(i)['y값'].mean() 한 값을 list에 담아야 하는데 이를 global로서 대체
+
 ---
 
 ## Modeling
 
 ---
 
-1. [코드 2줄로 30초만에 수십개의 모델 성능 테스트가 가능하다?!](https://github.com/gabesoon/Data_analysis_Cheatsheet/blob/main/%5BModeling%5D%20%EC%BD%94%EB%93%9C%202%EC%A4%84%EB%A1%9C%2010%EC%B4%88%EB%A7%8C%EC%97%90%20%EC%88%98%EC%8B%AD%EA%B0%9C%EC%9D%98%20%EB%AA%A8%EB%8D%B8%EC%84%B1%EB%8A%A5%20%EC%B8%A1%EC%A0%95%ED%95%98%EA%B8%B0.ipynb)
+1. [코드 2줄로 30초만에 수십개의 모델 성능 테스트가 가능하다?!]()
 
 ---
 
