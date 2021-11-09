@@ -212,7 +212,7 @@
 
 ---
 
-1. [코드 2줄로 30초만에 수십개의 모델 성능 테스트가 가능하다?!]()
+1. [코드 2줄로 30초만에 수십개의 모델 성능 테스트가 가능하다?!](https://github.com/gabesoon/Data_analysis_Cheatsheet/blob/main/%5BModeling%5D%20%EC%BD%94%EB%93%9C%202%EC%A4%84%EB%A1%9C%2010%EC%B4%88%EB%A7%8C%EC%97%90%20%EC%88%98%EC%8B%AD%EA%B0%9C%EC%9D%98%20%EB%AA%A8%EB%8D%B8%EC%84%B1%EB%8A%A5%20%EC%B8%A1%EC%A0%95%ED%95%98%EA%B8%B0.ipynb)
 
 ---
 
