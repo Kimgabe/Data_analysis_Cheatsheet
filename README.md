@@ -1,7 +1,7 @@
 # README
 
 ```html
-If..목차로 조금더 편하게 보고 싶다면 [Gabe's Notion]() 으로 ~! 😉
+If..목차로 조금더 편하게 보고 싶다면 [Gabe's Notion](https://gabesoon.notion.site/README-46d0652b7a134dc3a2bdec84c92b5fa7) 으로 ~! 😉
 ```
 
 # Preprocessing
