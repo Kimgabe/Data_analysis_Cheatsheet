@@ -1,5 +1,10 @@
 # README
 
+```python
+# 목차로 조금더 편하게 보고 싶다면 Notion으로 ~! 😉
+https://gabesoon.notion.site/README-46d0652b7a134dc3a2bdec84c92b5fa7
+```
+
 # Preprocessing
 
 ---
