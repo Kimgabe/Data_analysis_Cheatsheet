@@ -1,9 +1,10 @@
 # README
 
-# If..목차로 조금더 편하게 보고 싶다면 [Gabe's Notion](https://gabesoon.notion.site/README-46d0652b7a134dc3a2bdec84c92b5fa7) 으로 ~! 😉
+# If..목차로 조금더 편하게 보고 싶다면 [Gabe's Notion]() 으로 ~! 😉
 
+---
 
-# Preprocessing
+# 1. Preprocessing
 
 ---
 
@@ -103,6 +104,8 @@
 ---
 
 ## DataFrame 관련
+
+---
 
 ### 1. 컬럼 전처리 관련
 
@@ -207,107 +210,7 @@ df.to_html("test.html")
 
 ---
 
-## Encoding 관련
-
-### 문자형 데이터를 숫자형 데이터로 바꾸는 대표적 방법 : mean_eocoding
-
-<aside>
-💡 - feature가 이미 너무 많을때 사용하면 좋다. (one_hot encoding만이 능사는 아니다.)
-- 데이터의 차원수를 늘리지 않으면서 의미는 도출하고 싶을때!
-- mean_encoding의 근간이 되는 feature들은 추후 의미를 역 유추할때 필요하기 때문에 keep 해주는 것이 좋다.
-
-</aside>
-
-```python
-df = copy.deepcopy(raw_data)
-
-for i in obj_features:
-    dynamic_variable = str(i) + '_encode' # 여러개의 feature 동시에 encoding
-    globals()[dynamic_variable] = df.groupby(i)['y값'].mean() # 문자열 컬럼의 mean값 추출
-
-    new_col = str(i) + '_mean_enc' # 접미사 붙여서 새로운 컬럼 생성
-    df.loc[:, new_col] = df[i].map(globals()[dynamic_variable]) # mean값을 mapping
-```
-
-- df.groupby(i)['y값'].mean() 한 값을 list에 담아야 하는데 이를 global로서 대체
-
----
-
-## Text data 관련
-
-### Text 데이터 전처리 기본함수
-
-```python
-def clean_text(text):
-    pattern = '([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)' 
-    text = re.sub(pattern=pattern, repl='', string=text)
-    print("E-mail제거 : " , text , "\n")
-    pattern = '(http|ftp|https)://(?:[-\w.]|(?:%[\da-fA-F]{2}))+'
-    text = re.sub(pattern=pattern, repl='', string=text)
-    print("URL 제거 : ", text , "\n")
-    pattern = '([ㄱ-ㅎㅏ-ㅣ]+)'  
-    text = re.sub(pattern=pattern, repl='', string=text)
-    print("한글 자음 모음 제거 : ", text , "\n")
-    pattern = '<[^>]*>'        
-    text = re.sub(pattern=pattern, repl='', string=text)
-    print("태그 제거 : " , text , "\n")
-    pattern = r'\([^)]*\)'
-    text = re.sub(pattern=pattern, repl='', string=text)
-    print("괄호와 괄호안 글자 제거 :  " , text , "\n")
-    pattern = '[^\w\s]'   
-    text = re.sub(pattern=pattern, repl='', string=text)
-    print("특수기호 제거 : ", text , "\n" )
-    text = text.strip()
-    print("양 끝 공백 제거 : ", text , "\n" )
-    text = " ".join(text.split())
-    print("중간에 공백은 1개만 : ", text )
-    return text
-```
-
-Resource : [All I Need Is Data](https://data-newbie.tistory.com/210)
-
----
-
-# EDA
-
-## [코드 1줄로 Data profiling 하기](https://github.com/gabesoon/Data_analysis_Cheatsheet/blob/main/%5BEDA%5D%20Fancy%ED%95%98%EA%B2%8C%20pandas%EB%A1%9C%20EDA%20%ED%95%98%EA%B8%B0(feat.%20Pandas%20Profiling).ipynb)
-
----
-
----
-
-# Modeling
-
----
-
-## 1. [코드 2줄로 30초만에 수십개의 모델 성능 테스트가 가능하다?!](https://github.com/gabesoon/Data_analysis_Cheatsheet/blob/main/%5BModeling%5D%20%EC%BD%94%EB%93%9C%202%EC%A4%84%EB%A1%9C%2010%EC%B4%88%EB%A7%8C%EC%97%90%20%EC%88%98%EC%8B%AD%EA%B0%9C%EC%9D%98%20%EB%AA%A8%EB%8D%B8%EC%84%B1%EB%8A%A5%20%EC%B8%A1%EC%A0%95%ED%95%98%EA%B8%B0.ipynb)
-
----
-
-# Etc
-
----
-
-## 1. Jupyter 에서 long-running cell이 완료되었을때 알림 받기
-
-<aside>
-💡 → 작업이 완료될 경우 브라우져의 pop up 알림이 뜬다.
-
-</aside>
-
-```python
-#!pip install jupyternotify
-
-%%notify
-import time
-for seconds in range(1,5):
-		print("Working on {} seconds...".format(seconds))
-		time.sleep(seconds)
-```
-
----
-
-## 2. csv 파일을 불러올때 "Unnamed:0" 컬럼을 제외하는 법
+### csv 파일을 불러올때 "Unnamed:0" 컬럼을 제외하는 법
 
 1. 저장할때부터 Unnamed:0 이 생성되지 않도록 하기
 
@@ -353,9 +256,101 @@ df.rename(columns = dict(new_names), inplace=True)
 
 Resource : [Stackoverflow](https://stackoverflow.com/questions/39772896/add-prefix-to-specific-columns-of-dataframe)
 
+## Encoding 관련
+
+### 문자형 데이터를 숫자형 데이터로 바꾸기 : mean_eocoding
+
+<aside>
+💡 <장점>
+- feature가 이미 너무 많을때 사용하면 좋다. (one_hot encoding만이 능사는 아니다.)
+- 데이터의 차원수를 늘리지 않으면서 의미는 도출하고 싶을때!
+- mean_encoding의 근간이 되는 feature들은 추후 의미를 역 유추할때 필요하기 때문에 keep 해주는 것이 좋다.
+- Regression / Classification 상관없이 예측값에 좀 더 가깝게 학습된다.
+
+<단점>
+- 구현과 검증이 쉽지 않다.
+- Overfitting 위험이 있다. 
+1) Data Leak : train 데이터에 예측에 대한 값이 일부 들어가기 때문에 성능이 올라가는게 어찌보면 당연한 것.
+2) 각 Label의 mean값의 출처가 train set 뿐이다 → test set의 Label값의 통계적 분포가 다르면  overfitting이 발생한다.
+e.g) Train set의 sex는 male 100 & female 5  <-> Test set의 sex는 male 50 & female 50 인 경우
+→ "Train set의 female 5명의 평균 = Test set의 female 50명의 평균" 이라고 보기는 어렵기 때문.
+
+<보완책>
+1) Smoothing 기법을 활용해서 train set의 mean을 global mean으로 만들어서 치우쳐진 평균을 보완하는 방법 → Over fitting 방지
+
+2) CV loop 기법을 활용해서 Cross validation 을 통해서 Mean encoding값을 구해서 Label값에 따른 Encoding값을 다양하게 만든다. → Data Leak 방지
+
+</aside>
+
+```python
+df = copy.deepcopy(raw_data)
+
+for i in obj_features:
+    dynamic_variable = str(i) + '_encode' # 여러개의 feature 동시에 encoding
+    globals()[dynamic_variable] = df.groupby(i)['y값'].mean() # 문자열 컬럼 각 인자별 mean값 추출
+
+    new_col = str(i) + '_mean_enc' # 접미사 붙여서 새로운 컬럼 생성
+    df.loc[:, new_col] = df[i].map(globals()[dynamic_variable]) # 각 인자별 mean값을 mapping
+```
+
+- df.groupby(i)['y값'].mean() 한 값을 list에 담아야 하는데 이를 global로서 대체
+
+Resource : [하나씩 점을 찍어 나가며](https://dailyheumsi.tistory.com/120)
+
 ---
 
-## 3. 학습용 Fake 데이터를 만들기
+## Text data 관련
+
+### Text 데이터 전처리 기본함수
+
+```python
+def clean_text(text):
+    pattern = '([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)' 
+    text = re.sub(pattern=pattern, repl='', string=text)
+    print("E-mail제거 : " , text , "\n")
+    pattern = '(http|ftp|https)://(?:[-\w.]|(?:%[\da-fA-F]{2}))+'
+    text = re.sub(pattern=pattern, repl='', string=text)
+    print("URL 제거 : ", text , "\n")
+    pattern = '([ㄱ-ㅎㅏ-ㅣ]+)'  
+    text = re.sub(pattern=pattern, repl='', string=text)
+    print("한글 자음 모음 제거 : ", text , "\n")
+    pattern = '<[^>]*>'        
+    text = re.sub(pattern=pattern, repl='', string=text)
+    print("태그 제거 : " , text , "\n")
+    pattern = r'\([^)]*\)'
+    text = re.sub(pattern=pattern, repl='', string=text)
+    print("괄호와 괄호안 글자 제거 :  " , text , "\n")
+    pattern = '[^\w\s]'   
+    text = re.sub(pattern=pattern, repl='', string=text)
+    print("특수기호 제거 : ", text , "\n" )
+    text = text.strip()
+    print("양 끝 공백 제거 : ", text , "\n" )
+    text = " ".join(text.split())
+    print("중간에 공백은 1개만 : ", text )
+    return text
+```
+
+Resource : [All I Need Is Data](https://data-newbie.tistory.com/210)
+
+---
+
+# 2. EDA(Exploratory Data Analysis)
+
+### [코드 1줄로 Data profiling 하기](https://github.com/gabesoon/Data_analysis_Cheatsheet/blob/main/%5BEDA%5D%20Fancy%ED%95%98%EA%B2%8C%20pandas%EB%A1%9C%20EDA%20%ED%95%98%EA%B8%B0(feat.%20Pandas%20Profiling).ipynb)
+
+---
+
+# 3. Visualization
+
+---
+
+# 4. Modeling
+
+---
+
+## [코드 2줄로 30초만에 수십개의 모델 성능 테스트가 가능하다?!](https://github.com/gabesoon/Data_analysis_Cheatsheet/blob/main/%5BModeling%5D%20%EC%BD%94%EB%93%9C%202%EC%A4%84%EB%A1%9C%2010%EC%B4%88%EB%A7%8C%EC%97%90%20%EC%88%98%EC%8B%AD%EA%B0%9C%EC%9D%98%20%EB%AA%A8%EB%8D%B8%EC%84%B1%EB%8A%A5%20%EC%B8%A1%EC%A0%95%ED%95%98%EA%B8%B0.ipynb)
+
+## 학습용 Fake 데이터를 만들기
 
 <aside>
 💡 fake text, fake credit card number 등을 생성할 수 있다.
@@ -397,7 +392,32 @@ Resource : [Faker Official Document](https://faker.readthedocs.io/en/master/)
 
 ---
 
-## 4. pip 특정 버전 설치 & upgrdae
+---
+
+# 4. Etc
+
+---
+
+## Jupyter 에서 long-running cell이 완료되었을때 알림 받기
+
+<aside>
+💡 → 작업이 완료될 경우 브라우져의 pop up 알림이 뜬다.
+
+</aside>
+
+```python
+#!pip install jupyternotify
+
+%%notify
+import time
+for seconds in range(1,5):
+		print("Working on {} seconds...".format(seconds))
+		time.sleep(seconds)
+```
+
+---
+
+## pip 특정 버전 설치 & upgrdae
 
 ```python
 # 특정 버전 설치
