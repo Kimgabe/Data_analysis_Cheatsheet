@@ -103,6 +103,33 @@
 
 ---
 
+## List & Dictionary 관련
+
+---
+
+### List 관련
+
+---
+
+### Dictionary 관련
+
+### 두 개의 list를 하나의 Dictionary로 바꾸기
+
+```python
+A = ['Apple','Banana','Watermelon']
+B = [1, 2, 3]
+```
+
+```python
+dic = {name : value for name, value in zip(A,B)}
+dic
+```
+
+```python
+# output
+{'Apple': 1, 'Banana': 2, 'Watermelon': 3}
+```
+
 ## DataFrame 관련
 
 ---
