@@ -1,6 +1,8 @@
 # README
 
-# If..목차로 조금더 편하게 보고 싶다면 [Gabe's Notion]() 으로 ~! 😉
+```markdown
+If..목차로 조금더 편하게 보고 싶다면 [Gabe's Notion](https://www.notion.so/README-46d0652b7a134dc3a2bdec84c92b5fa7) 으로 ~! 😉
+```
 
 ---
 
@@ -129,6 +131,8 @@ dic
 # output
 {'Apple': 1, 'Banana': 2, 'Watermelon': 3}
 ```
+
+---
 
 ## DataFrame 관련
 
@@ -421,7 +425,7 @@ Resource : [Faker Official Document](https://faker.readthedocs.io/en/master/)
 
 ---
 
-# 4. Etc
+# 5. Etc
 
 ---
 
@@ -462,3 +466,5 @@ pip install --upgrade package_name==package version
 ```
 
 [Resource: 삵 izz well](https://gentlesark.tistory.com/26)
+
+---
