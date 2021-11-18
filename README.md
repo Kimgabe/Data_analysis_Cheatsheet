@@ -8,6 +8,23 @@
 
 ---
 
+## groupby
+
+### get_group : same as df[df['columns']=='조건']
+
+```python
+df.groupby('기준_column').get_group('조건value')
+```
+
+```python
+# First Row of each group
+df.groupby('기준_column').first()
+# Last Row of each group
+df.groupby('기준_column').last()
+# 2nd Row of each group 
+df.groupby('기준_column').nth(1)
+```
+
 ## 데이터 핸들링 관련
 
 ### [Pandas String 데이터 기본 전처리](https://github.com/gabesoon/Data_analysis_Cheatsheet/blob/main/%5BProprocessing%5D%20Pandas%20String%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B3%B8%20%EC%A0%84%EC%B2%98%EB%A6%AC.ipynb) 코드 모음 zip
@@ -366,6 +383,41 @@ Resource : [All I Need Is Data](https://data-newbie.tistory.com/210)
 # 2. EDA(Exploratory Data Analysis)
 
 ### [코드 1줄로 Data profiling 하기](https://github.com/gabesoon/Data_analysis_Cheatsheet/blob/main/%5BEDA%5D%20Fancy%ED%95%98%EA%B2%8C%20pandas%EB%A1%9C%20EDA%20%ED%95%98%EA%B8%B0(feat.%20Pandas%20Profiling).ipynb)
+
+### 중복데이터 찾기
+
+```markdown
+df.duplicated().sum()
+```
+
+### 각 컬럼별 인자값의 개수
+
+```markdown
+df['column_name'].value_counts()
+```
+
+### 각 컬럼별 null값의 개수
+
+```markdown
+df.isnull().sum()
+```
+
+### 특정 컬럼 기준 정렬하기
+
+```python
+# ascending = True = 내림차순
+df.sort_values(by='컬럼명', ascending=False)
+```
+
+### 특정 데이터만을 추출한 후 정렬하기 : sort_value + groupby().first()
+
+```python
+# Sort and get the first value of each group
+df.sort_values(by='정렬할_column',    
+               ascending=False)
+              .groupby('기준_column')
+              .first()
+```
 
 ---
 
